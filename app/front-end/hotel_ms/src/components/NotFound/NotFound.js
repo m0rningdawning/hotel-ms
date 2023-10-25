@@ -1,26 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Home = () => {
-  const raccoonStyle = {
+const NotFound = () => {
+  const catStyle = {
     width: "150px",
     height: "150px",
   };
 
   return (
     <div>
-      <h1>Home Page</h1>
+      <h1>404 - Page Not Found!</h1>
       <div>
         <img
           id="raccoon"
-          style={raccoonStyle}
-          src="/resources/raccoon.jpeg"
+          style={catStyle}
+          src="/resources/cat.jpg"
           alt="Raccoon"
         />
       </div>
-      <Link to="/admin">Go to Admin Page</Link>
+      <Link to="/home">Go to Home Page</Link>
     </div>
   );
 };
 
-export default Home;
+export default NotFound;
