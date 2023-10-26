@@ -9,7 +9,7 @@ const AppRouter = () => {
     <Router>
       <Routes>
         <Route path="*" element={<NotFound />} /> 
-        <Route exact path="/home" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/" element={<Navigate replace to="/home" />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
