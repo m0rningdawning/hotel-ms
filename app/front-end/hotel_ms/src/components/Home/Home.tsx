@@ -7,8 +7,13 @@ const Home = () => {
     height: "150px",
   };
 
+  const linkList = [
+    { to: "*", text: "Test 404 page" },
+    { to: "/admin", text: "Go to Admin Page" },
+  ];
+
   return (
-    <div>
+    <>
       <h1>Home Page</h1>
       <div>
         <img
@@ -18,8 +23,15 @@ const Home = () => {
           alt="Raccoon"
         />
       </div>
-      <Link to="/admin">Go to Admin Page</Link>
-    </div>
+      <ul className="list-group">
+        <li className="list-group-item">
+          <Link to={linkList[1].to}>{linkList[1].text}</Link>
+        </li>
+        <li className="list-group-item">
+          <Link to={linkList[0].to}>{linkList[0].text}</Link>
+        </li>
+      </ul>
+    </>
   );
 };
 
