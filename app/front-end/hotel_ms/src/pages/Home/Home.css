@@ -3,6 +3,7 @@
 #raccoon {
   width: 150px;
   height: 150px;
+  margin: 10px;
 }
 
 #raccoon:hover {
