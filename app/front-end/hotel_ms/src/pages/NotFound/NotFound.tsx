@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./NotFound.css";
 
 const NotFound = () => {
   const catStyle = {
@@ -8,17 +9,16 @@ const NotFound = () => {
   };
 
   return (
-    <div>
+    <div className="content-wrapper-404">
       <h1>404 - Page Not Found!</h1>
       <div>
-        <img
-          id="raccoon"
-          style={catStyle}
-          src="/resources/cat.jpg"
-          alt="Raccoon"
-        />
+        <img id="catto" style={catStyle} src="/resources/cat.jpg" alt="Catto" />
       </div>
-      <Link to="/home">Go to Home Page</Link>
+      <Link to="/home">
+        <button type="button" className="btn btn-outline-light">
+          Home Page
+        </button>
+      </Link>
     </div>
   );
 };

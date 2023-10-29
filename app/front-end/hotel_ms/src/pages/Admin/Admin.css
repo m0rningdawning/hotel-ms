@@ -1,24 +1,24 @@
 /* Misc */
 
-#doggo {
+#raccoon {
   width: 150px;
   height: 150px;
   margin: 10px;
 }
 
-#doggo:hover {
+#raccoon:hover {
   transform: scale(1.1);
   transition: all 0.2s;
 }
 
-#doggo:active {
+#raccoon:active {
   transform: scale(0.9);
   transition: all 0.2s;
 }
 
 /* Content */
 
-.content-wrapper-home {
+.content-wrapper-admin {
   display: flex;
   width: 100%;
   max-width: 1400px;

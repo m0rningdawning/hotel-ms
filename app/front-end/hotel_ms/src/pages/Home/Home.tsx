@@ -1,57 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import HmsHeader from "../../components/header/HmsHeader";
 import "./Home.css";
 
 const Home = () => {
-  const linkList = [
-    { to: "/admin", text: "Admin Page" },
-    { to: "*", text: "404 Page" },
-  ];
-
-  const [scrollTransition, setScrollTransition] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setScrollTransition(true);
-      } else {
-        setScrollTransition(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <>
-      <header className={scrollTransition ? "scroll_transition" : ""}>
-        <nav className="header-nav">
-          <h1 className="header-h1">Home Page</h1>
-          <ul id="header-ul">
-            <li>
-              <Link to={linkList[0].to}>
-                <button type="button" className="btn btn-outline-light">
-                  {linkList[0].text}
-                </button>
-              </Link>
-            </li>
-            <li>
-              <Link to={linkList[1].to}>
-                <button type="button" className="btn btn-outline-light">
-                  {linkList[1].text}
-                </button>
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <div className="content-wrapper">
+      <HmsHeader />
+      <div className="content-wrapper-home">
         <div>
-          <img id="raccoon" src="/resources/raccoon.jpeg" alt="Raccoon" />
+          <img id="doggo" src="/resources/doggo.jpg" alt="Doggo" />
         </div>
         <div>
           <p>

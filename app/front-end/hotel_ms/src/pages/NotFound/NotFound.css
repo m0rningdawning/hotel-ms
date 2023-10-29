@@ -1,27 +1,26 @@
 /* Misc */
 
-#doggo {
+#catto {
   width: 150px;
   height: 150px;
   margin: 10px;
 }
 
-#doggo:hover {
+#catto:hover {
   transform: scale(1.1);
   transition: all 0.2s;
 }
 
-#doggo:active {
+#catto:active {
   transform: scale(0.9);
   transition: all 0.2s;
 }
 
 /* Content */
 
-.content-wrapper-home {
+.content-wrapper-404 {
   display: flex;
-  width: 100%;
-  max-width: 1400px;
+  width: 1400px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
