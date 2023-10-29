@@ -1,5 +1,6 @@
-import React from 'react';
-import AppRouter from './AppRouter';
+import React from "react";
+import AppRouter from "./AppRouter";
+import "./App.css";
 
 const App = () => {
   return (
@@ -7,6 +8,6 @@ const App = () => {
       <AppRouter />
     </div>
   );
-}
+};
 
 export default App;

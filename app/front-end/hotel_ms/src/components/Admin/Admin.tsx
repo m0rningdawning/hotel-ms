@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Admin = () => {
   const raccoonStyle = {
@@ -21,6 +21,6 @@ const Admin = () => {
       <Link to="/home">Go to Home Page</Link>
     </div>
   );
-}
+};
 
 export default Admin;
