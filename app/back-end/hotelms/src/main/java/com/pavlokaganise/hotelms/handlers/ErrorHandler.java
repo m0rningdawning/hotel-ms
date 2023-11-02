@@ -1,4 +1,4 @@
-package com.pavlokaganise.hotelms;
+package com.pavlokaganise.hotelms.handlers;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.boot.web.servlet.error.ErrorController;
