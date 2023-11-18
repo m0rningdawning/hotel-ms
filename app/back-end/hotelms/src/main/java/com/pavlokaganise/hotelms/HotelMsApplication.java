@@ -1,6 +1,6 @@
-package com.pavlokaganise.hotelms.controllers;
+package com.pavlokaganise.hotelms;
 
-import com.pavlokaganise.hotelms.handlers.ErrorHandler;
+//import com.pavlokaganise.hotelms.handlers.ErrorHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @ComponentScan(basePackages = "com.pavlokaganise.hotelms")
 public class HotelMsApplication {
     @Autowired
-    public ErrorHandler errorHandler;
+//    public ErrorHandler errorHandler;
 
     public static void main(String[] args) {
         SpringApplication.run(HotelMsApplication.class, args);

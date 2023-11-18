@@ -11,7 +11,7 @@ const Admin = () => {
           <img id="raccoon" src="/resources/raccoon.jpeg" alt="Raccoon" />
         </div>
         <div>
-          <p>
+          <p id = "p-content">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ipsum
             quo consectetur nulla unde, ea amet cumque voluptatem, nam quam
             libero alias impedit similique, autem sapiente delectus nisi

@@ -11,7 +11,7 @@ const Home = () => {
           <img id="doggo" src="/resources/doggo.jpg" alt="Doggo" />
         </div>
         <div>
-          <p>
+          <p id = "p-content">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ipsum
             quo consectetur nulla unde, ea amet cumque voluptatem, nam quam
             libero alias impedit similique, autem sapiente delectus nisi

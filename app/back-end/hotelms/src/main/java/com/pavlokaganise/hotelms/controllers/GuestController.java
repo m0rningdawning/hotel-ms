@@ -1,35 +1,26 @@
 package com.pavlokaganise.hotelms.controllers;
 
+import com.pavlokaganise.hotelms.entities.GuestEntity;
+import com.pavlokaganise.hotelms.repositories.GuestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-// Guest controller example
+@RestController
+public class GuestController {
+    private final GuestRepository guestRepository;
 
-//
-//@RestController
-//@RequestMapping("/guests")
-//public class GuestController {
-//
-//    @Autowired
-//    private GuestService guestService;
-//
-//    @GetMapping("/{id}")
-//    public Guest getGuestById(@PathVariable Long id) {
-//        return guestService.getGuestById(id);
-//    }
-//
-//    @PostMapping
-//    public Guest createGuest(@RequestBody Guest guest) {
-//        return guestService.createGuest(guest);
-//    }
-//
-//    @PutMapping("/{id}")
-//    public Guest updateGuest(@PathVariable Long id, @RequestBody Guest guest) {
-//        return guestService.updateGuest(id, guest);
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public void deleteGuest(@PathVariable Long id) {
-//        guestService.deleteGuest(id);
-//    }
-//}
+    @Autowired
+    public GuestController(GuestRepository guestRepository) {
+        this.guestRepository = guestRepository;
+    }
+
+    @GetMapping("/guests")
+    public Iterable<GuestEntity> findAllGuests() {
+        return this.guestRepository.findAll();
+    }
+
+    @PostMapping("/guests")
+    public GuestEntity addOneGuest(@RequestBody GuestEntity guest) {
+        return this.guestRepository.save(guest);
+    }
+}
