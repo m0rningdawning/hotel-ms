@@ -9,6 +9,7 @@ import {
 import Home from "./pages/Home/Home";
 import Admin from "./pages/Admin/Admin";
 import NotFound from "./pages/NotFound/NotFound";
+import Login from "./pages/Login/Login";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -30,6 +31,7 @@ const AppRouter = () => {
           <Route path="/home" element={<Home />} />
           <Route path="/" element={<Navigate replace to="/home" />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       }
     </Router>
