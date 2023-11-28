@@ -1,4 +1,5 @@
 import React from "react";
+import HmsFooter from "../../components/footer/HmsFooter";
 import HmsHeader from "../../components/header/HmsHeader";
 import "./Home.css";
 
@@ -134,6 +135,7 @@ const Home = () => {
           </p>
         </div>
       </div>
+      <HmsFooter />
     </>
   );
 };

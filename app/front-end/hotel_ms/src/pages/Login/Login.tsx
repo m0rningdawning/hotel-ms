@@ -1,4 +1,5 @@
 import React from "react";
+import HmsFooter from "../../components/footer/HmsFooter";
 import HmsHeader from "../../components/header/HmsHeader";
 import "./Login.css";
 
@@ -278,6 +279,7 @@ const Login = () => {
           {/* Pills content */}
         </div>
       </div>
+      <HmsFooter />
     </>
   );
 };

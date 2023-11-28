@@ -1,0 +1,35 @@
+/* Footer */
+
+footer {
+  display: flex;
+  background-color: rgb(51, 79, 40);
+  width: 100%;
+  justify-content: center;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: row;
+  height: 80px;
+  width: 1400px;
+  padding: 25px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-h1 {
+  font-size: 42px;
+  margin: 0;
+  padding: 0;
+}
+
+#footer-ul {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: space-between;
+  align-items: center;
+}
