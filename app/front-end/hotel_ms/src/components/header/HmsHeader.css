@@ -4,6 +4,7 @@ header {
   position: sticky;
   display: flex;
   width: 100%;
+  z-index: 1000;
   top: 0;
   justify-content: center;
   transition: background-color 0.1s ease-in-out;

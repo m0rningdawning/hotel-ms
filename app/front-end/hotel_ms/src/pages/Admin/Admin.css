@@ -22,8 +22,25 @@
   display: flex;
   width: 100%;
   max-width: 1400px;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   padding: 15px;
+}
+
+.content-aside{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1400px;
+  padding: 15px;
+}
+
+.content-h1 {
+  font-size: 42px;
+  padding: 5px;
+}
+
+#p-content{
+  margin-bottom: 30px;
 }
