@@ -1,6 +1,15 @@
 /* Footer */
 
-footer {
+.footer {
+  display: flex;
+  background-color: rgb(51, 79, 40);
+  width: 100%;
+  justify-content: center;
+}
+
+.footer-login{
+  position: fixed;
+  bottom: 0;
   display: flex;
   background-color: rgb(51, 79, 40);
   width: 100%;

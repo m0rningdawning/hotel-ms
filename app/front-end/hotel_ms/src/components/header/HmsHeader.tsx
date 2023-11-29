@@ -10,6 +10,9 @@ const HmsHeader = () => {
     { to: "/login", text: "Login Page" },
   ];
 
+
+  const headerTypes = ["header", "header-login"];
+
   const location = useLocation();
   const [scrollTransition, setScrollTransition] = useState(false);
 
@@ -30,7 +33,7 @@ const HmsHeader = () => {
   }, []);
 
   return (
-    <header className={scrollTransition ? "scroll_transition" : ""}>
+    <header className={`${scrollTransition ? "scroll_transition" : ""} ${location.pathname === linkList[3].to ? headerTypes[1] : headerTypes[0]}`}>
       <nav className="header-nav">
         {location.pathname === linkList[0].to ? (
           <h1 className="header-h1">Home Page</h1>

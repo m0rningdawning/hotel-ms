@@ -36,9 +36,7 @@ const HomeCarousel = () => {
           ></img>
           <Carousel.Caption>
             <h3>Luxury Room 3</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

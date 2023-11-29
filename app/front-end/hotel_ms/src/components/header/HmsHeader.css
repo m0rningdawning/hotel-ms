@@ -1,6 +1,6 @@
 /* Header */
 
-header {
+.header {
   position: sticky;
   display: flex;
   width: 100%;
@@ -8,6 +8,16 @@ header {
   top: 0;
   justify-content: center;
   transition: background-color 0.1s ease-in-out;
+}
+
+.header-login {
+  position: sticky;
+  display: flex;
+  background-color: rgb(51, 79, 40);
+  width: 100%;
+  z-index: 1000;
+  top: 0;
+  justify-content: center;
 }
 
 .scroll_transition {
