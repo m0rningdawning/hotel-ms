@@ -2,11 +2,88 @@
 
 .content-wrapper-login {
   display: flex;
-  width: 20%;
+  width: 25%;
   height: 89vh;
   max-width: 1400px;
   flex-direction: column;
   justify-content: center;
+}
+
+/* Form */
+
+#form-submit-login-btn {
+  display: block;
+  margin-top: 20px;
+  width: 30%;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid white;
+  background: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0 auto;
+  transition: 0.2s;
+}
+
+#form-submit-login-btn:hover {
+  background: white;
+  color: #1a1a1a;
+}
+
+.form-hyperlink {
+  color: green;
+}
+
+.form-check-input {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #2196F3;
+  width: 20px;
+  height: 20px;
+}
+
+.form-check-input:checked {
+  background-color: #1a1a1a;
+}
+
+#form-tab-register {
+  width: 80%;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid white;
+  transition: 0.2s;
+  margin: 0 auto;
+}
+
+#form-tab-register:active {
+  background: white;
+  color: #1a1a1a;
+}
+
+#form-tab-register:hover {
+  background: white;
+  color: #1a1a1a;
+}
+
+#form-tab-login {
+  width: 80%;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid white;
+  transition: 0.2s;
+  margin: 0 auto;
+}
+
+#form-tab-login:hover {
+  background: white;
+  color: #1a1a1a;
+}
+
+.nav-link.active-login-register {
+  background: white;
+  color: #1a1a1a !important;
 }
 
 /* Footer */

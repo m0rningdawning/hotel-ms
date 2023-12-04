@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import HmsFooter from "../../components/footer/HmsFooter";
 import HmsHeader from "../../components/header/HmsHeader";
 import "./Login.css";
 
+const activeTab = (e: any) => {
+  const tabs = document.querySelectorAll(".nav-link");
+  tabs.forEach((tab) => {
+    tab.classList.remove("active-login-register");
+  });
+  e.target.classList.add("active-login-register");
+};
+
 const Login = () => {
+  const [isChecked, setIsChecked] = useState(false);
+
   return (
     <>
       <HmsHeader />
@@ -17,13 +27,14 @@ const Login = () => {
           >
             <li className="nav-item" role="presentation">
               <a
-                className="nav-link active"
-                id="tab-login"
+                id="form-tab-login"
+                className="nav-link active-login-register"
                 data-mdb-toggle="pill"
                 href="#pills-login"
                 role="tab"
                 aria-controls="pills-login"
                 aria-selected="true"
+                onClick={activeTab}
               >
                 Login
               </a>
@@ -31,12 +42,13 @@ const Login = () => {
             <li className="nav-item" role="presentation">
               <a
                 className="nav-link"
-                id="tab-register"
+                id="form-tab-register"
                 data-mdb-toggle="pill"
                 href="#pills-register"
                 role="tab"
                 aria-controls="pills-register"
                 aria-selected="false"
+                onClick={activeTab}
               >
                 Register
               </a>
@@ -85,7 +97,8 @@ const Login = () => {
                         type="checkbox"
                         value=""
                         id="loginCheck"
-                        checked
+                        checked={isChecked}
+                        onChange={() => setIsChecked(!isChecked)}
                       />
                       <label className="form-check-label" htmlFor="loginCheck">
                         {" "}
@@ -96,13 +109,16 @@ const Login = () => {
 
                   <div className="col-md-6 d-flex justify-content-center">
                     {/* Simple link */}
-                    <a href="#!">Forgot password?</a>
+                    <a className="form-hyperlink" href="#!">
+                      Forgot password?
+                    </a>
                   </div>
                 </div>
 
                 {/* Submit button */}
                 <button
                   type="submit"
+                  id="form-submit-login-btn"
                   className="btn btn-primary btn-block mb-4"
                 >
                   Sign in
@@ -111,7 +127,10 @@ const Login = () => {
                 {/* Register buttons */}
                 <div className="text-center">
                   <p>
-                    Not a member? <a href="#!">Register</a>
+                    Not a member?{" "}
+                    <a className="form-hyperlink" href="#!">
+                      Register
+                    </a>
                   </p>
                 </div>
               </form>
@@ -238,6 +257,7 @@ const Login = () => {
                 {/* Submit button */}
                 <button
                   type="submit"
+                  id="form-submit-register-btn"
                   className="btn btn-primary btn-block mb-3"
                 >
                   Sign in
