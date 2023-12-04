@@ -9,17 +9,27 @@ const activeTab = (e: any) => {
     tab.classList.remove("active-login-register");
   });
   e.target.classList.add("active-login-register");
+
+  const tabId = e.target.getAttribute("href");
+  const content = document.querySelector(tabId);
+  if (content) {
+    const allContent = document.querySelectorAll(".tab-pane");
+    allContent.forEach((item) => {
+      item.classList.remove("show", "active");
+    });
+    content.classList.add("show", "active");
+  }
 };
 
 const Login = () => {
   const [isChecked, setIsChecked] = useState(false);
+  const [isRegisterClicked, setIsRegisterClicked] = useState(false);
 
   return (
     <>
       <HmsHeader />
       <div className="content-wrapper-login">
         <div>
-          {/* Pills navs */}
           <ul
             className="nav nav-pills nav-justified mb-3"
             id="ex1"
@@ -34,7 +44,10 @@ const Login = () => {
                 role="tab"
                 aria-controls="pills-login"
                 aria-selected="true"
-                onClick={activeTab}
+                onClick={(event) => {
+                  setIsRegisterClicked(true);
+                  activeTab(event);
+                }}
               >
                 Login
               </a>
@@ -48,18 +61,21 @@ const Login = () => {
                 role="tab"
                 aria-controls="pills-register"
                 aria-selected="false"
-                onClick={activeTab}
+                onClick={(event) => {
+                  setIsRegisterClicked(true);
+                  activeTab(event);
+                }}
               >
                 Register
               </a>
             </li>
           </ul>
-          {/* Pills navs */}
 
-          {/* Pills content */}
           <div className="tab-content">
             <div
-              className="tab-pane fade show active"
+              className={`tab-pane fade ${
+                !isRegisterClicked ? "show active" : ""
+              }`}
               id="pills-login"
               role="tabpanel"
               aria-labelledby="tab-login"
@@ -67,7 +83,6 @@ const Login = () => {
               <form>
                 <p className="text-center">Sign in:</p>
 
-                {/* Email input */}
                 <div className="form-outline mb-4">
                   <input type="email" id="loginName" className="form-control" />
                   <label className="form-label" htmlFor="loginName">
@@ -75,7 +90,6 @@ const Login = () => {
                   </label>
                 </div>
 
-                {/* Password input */}
                 <div className="form-outline mb-4">
                   <input
                     type="password"
@@ -87,10 +101,8 @@ const Login = () => {
                   </label>
                 </div>
 
-                {/* 2 column grid layout */}
                 <div className="row mb-4">
                   <div className="col-md-6 d-flex justify-content-center">
-                    {/* Checkbox */}
                     <div className="form-check mb-3 mb-md-0">
                       <input
                         className="form-check-input"
@@ -108,27 +120,32 @@ const Login = () => {
                   </div>
 
                   <div className="col-md-6 d-flex justify-content-center">
-                    {/* Simple link */}
                     <a className="form-hyperlink" href="#!">
                       Forgot password?
                     </a>
                   </div>
                 </div>
 
-                {/* Submit button */}
                 <button
                   type="submit"
                   id="form-submit-login-btn"
-                  className="btn btn-primary btn-block mb-4"
+                  className="form-login-register-btn mb-4"
                 >
                   Sign in
                 </button>
 
-                {/* Register buttons */}
                 <div className="text-center">
                   <p>
                     Not a member?{" "}
-                    <a className="form-hyperlink" href="#!">
+                    <a
+                      className="form-hyperlink"
+                      href="#pills-register"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        setIsRegisterClicked(true);
+                        document.getElementById("form-tab-register")?.click();
+                      }}
+                    >
                       Register
                     </a>
                   </p>
@@ -137,46 +154,16 @@ const Login = () => {
             </div>
 
             <div
-              className="tab-pane fade"
+              className={`tab-pane fade ${
+                isRegisterClicked ? "show active" : ""
+              }`}
               id="pills-register"
               role="tabpanel"
               aria-labelledby="tab-register"
             >
               <form>
-                <div className="text-center mb-3">
-                  <p>Sign up with:</p>
-                  <button
-                    type="button"
-                    className="btn btn-link btn-floating mx-1"
-                  >
-                    <i className="fab fa-facebook-f"></i>
-                  </button>
+                <p className="text-center">Register:</p>
 
-                  <button
-                    type="button"
-                    className="btn btn-link btn-floating mx-1"
-                  >
-                    <i className="fab fa-google"></i>
-                  </button>
-
-                  <button
-                    type="button"
-                    className="btn btn-link btn-floating mx-1"
-                  >
-                    <i className="fab fa-twitter"></i>
-                  </button>
-
-                  <button
-                    type="button"
-                    className="btn btn-link btn-floating mx-1"
-                  >
-                    <i className="fab fa-github"></i>
-                  </button>
-                </div>
-
-                <p className="text-center">or:</p>
-
-                {/* Name input */}
                 <div className="form-outline mb-4">
                   <input
                     type="text"
@@ -188,7 +175,6 @@ const Login = () => {
                   </label>
                 </div>
 
-                {/* Username input */}
                 <div className="form-outline mb-4">
                   <input
                     type="text"
@@ -200,7 +186,6 @@ const Login = () => {
                   </label>
                 </div>
 
-                {/* Email input */}
                 <div className="form-outline mb-4">
                   <input
                     type="email"
@@ -212,7 +197,6 @@ const Login = () => {
                   </label>
                 </div>
 
-                {/* Password input */}
                 <div className="form-outline mb-4">
                   <input
                     type="password"
@@ -224,7 +208,6 @@ const Login = () => {
                   </label>
                 </div>
 
-                {/* Repeat Password input */}
                 <div className="form-outline mb-4">
                   <input
                     type="password"
@@ -239,33 +222,16 @@ const Login = () => {
                   </label>
                 </div>
 
-                {/* Checkbox */}
-                <div className="form-check d-flex justify-content-center mb-4">
-                  <input
-                    className="form-check-input me-2"
-                    type="checkbox"
-                    value=""
-                    id="registerCheck"
-                    checked
-                    aria-describedby="registerCheckHelpText"
-                  />
-                  <label className="form-check-label" htmlFor="registerCheck">
-                    I have read and agree to the terms
-                  </label>
-                </div>
-
-                {/* Submit button */}
                 <button
                   type="submit"
                   id="form-submit-register-btn"
-                  className="btn btn-primary btn-block mb-3"
+                  className="form-login-register-btn mb-4"
                 >
-                  Sign in
+                  Register
                 </button>
               </form>
             </div>
           </div>
-          {/* Pills content */}
         </div>
       </div>
       <HmsFooter />

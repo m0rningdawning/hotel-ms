@@ -11,7 +11,7 @@
 
 /* Form */
 
-#form-submit-login-btn {
+.form-login-register-btn {
   display: block;
   margin-top: 20px;
   width: 30%;
@@ -27,7 +27,7 @@
   transition: 0.2s;
 }
 
-#form-submit-login-btn:hover {
+.form-login-register-btn:hover {
   background: white;
   color: #1a1a1a;
 }
@@ -39,7 +39,7 @@
 .form-check-input {
   -webkit-appearance: none;
   appearance: none;
-  background-color: #2196F3;
+  background-color: #2196f3;
   width: 20px;
   height: 20px;
 }
