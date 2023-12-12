@@ -11,14 +11,19 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
+
 @SpringBootApplication
 @RestController
 @ComponentScan(basePackages = "com.pavlokaganise.hotelms")
 public class HotelMsApplication {
     //public ErrorHandler errorHandler;
+    // TODO:
+    //  1. Refactor factory to create controllers along/instead of entities
+    //  2. Refactor methods of entities (Maybe?)
     CrudFactory crudFactory = new CrudFactory();
-    GuestEntity guestEntity = crudFactory.createGuestEntity();
-    StaffEntity staffEntity = crudFactory.createStaffEntity();
+    GuestEntity guestEntity = crudFactory.createGuestEntity("1", "Someone", LocalDate.parse("2022-02-17"));
+    StaffEntity staffEntity = crudFactory.createStaffEntity("1", "Pavlo", "Manager");
 
     public static void main(String[] args) {
         SpringApplication.run(HotelMsApplication.class, args);
