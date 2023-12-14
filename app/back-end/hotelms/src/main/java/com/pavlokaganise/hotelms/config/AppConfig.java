@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
     @Bean
-    public CrudFactory createCrudFactory(){
+    public CrudFactory CrudFactory(){
         return new CrudFactory();
     }
 }

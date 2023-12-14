@@ -21,9 +21,6 @@ public class HotelMsApplication {
     // TODO:
     //  1. Refactor factory to create controllers along/instead of entities
     //  2. Refactor methods of entities (Maybe?)
-    CrudFactory crudFactory;
-    GuestEntity guestEntity = crudFactory.createGuestEntity("1", "Someone", LocalDate.parse("2022-02-17"));
-    StaffEntity staffEntity = crudFactory.createStaffEntity("1", "Pavlo", "Manager");
 
     public static void main(String[] args) {
         SpringApplication.run(HotelMsApplication.class, args);
@@ -34,10 +31,10 @@ public class HotelMsApplication {
         return "This is the root end point!";
     }
 
-    @GetMapping("/factory")
-    public String endpointFactory() {
-        int guestId = guestEntity.getId();
-        int staffId = staffEntity.getId();
-        return "Guest ID: " + guestId + "\nStaff ID: " + staffId;
-    }
+//    @GetMapping("/factory")
+//    public String endpointFactory() {
+//        int guestId = guestEntity.getId();
+//        int staffId = staffEntity.getId();
+//        return "Guest ID: " + guestId + "\nStaff ID: " + staffId;
+//    }
 }
