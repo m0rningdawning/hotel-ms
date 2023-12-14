@@ -21,7 +21,7 @@ public class HotelMsApplication {
     // TODO:
     //  1. Refactor factory to create controllers along/instead of entities
     //  2. Refactor methods of entities (Maybe?)
-    CrudFactory crudFactory = new CrudFactory();
+    CrudFactory crudFactory;
     GuestEntity guestEntity = crudFactory.createGuestEntity("1", "Someone", LocalDate.parse("2022-02-17"));
     StaffEntity staffEntity = crudFactory.createStaffEntity("1", "Pavlo", "Manager");
 

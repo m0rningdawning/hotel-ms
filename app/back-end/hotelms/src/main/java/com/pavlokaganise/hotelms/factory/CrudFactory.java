@@ -4,9 +4,11 @@ import com.pavlokaganise.hotelms.controllers.GuestController;
 import com.pavlokaganise.hotelms.entities.GuestEntity;
 import com.pavlokaganise.hotelms.entities.StaffEntity;
 import com.pavlokaganise.hotelms.repositories.GuestRepository;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
+@Component
 public class CrudFactory implements CrudFactoryInterface{
 
     @Override
