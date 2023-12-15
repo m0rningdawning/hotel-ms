@@ -1,7 +1,9 @@
 package com.pavlokaganise.hotelms.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
+@Getter
 @Entity
 @Table(name = "rooms")
 public class RoomEntity {
@@ -19,21 +21,5 @@ public class RoomEntity {
         this.roomNumber = roomNumber;
         this.roomType = roomType;
         this.isAvailable = isAvailable;
-    }
-
-    public Integer getId() {
-        return this.id;
-    }
-
-    public Integer getRoomNumber() {
-        return this.roomNumber;
-    }
-
-    public String getRoomType() {
-        return this.roomType;
-    }
-
-    public Boolean getIsAvailable() {
-        return this.isAvailable;
     }
 }
