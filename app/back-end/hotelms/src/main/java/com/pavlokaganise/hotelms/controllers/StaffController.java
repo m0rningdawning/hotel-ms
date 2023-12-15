@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class StaffController {
-
     private final StaffRepository staffRepository;
     @Autowired
     public StaffController(StaffRepository staffRepository) {
