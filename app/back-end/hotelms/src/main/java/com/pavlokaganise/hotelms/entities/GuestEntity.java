@@ -1,8 +1,12 @@
 package com.pavlokaganise.hotelms.entities;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
+import lombok.Getter;
 
+import java.time.LocalDate;
+import java.util.Random;
+
+@Getter
 @Entity
 @Table(name = "guests")
 public class GuestEntity {
@@ -13,28 +17,26 @@ public class GuestEntity {
     private String lastName;
     private LocalDate dateOfBirth;
 
+    public int generateId() {
+        long timestamp = System.currentTimeMillis();
+        int randomNumber = (int) (Math.random() * 1000);
+        return (int) (timestamp + randomNumber);
+    }
+
     public GuestEntity() {
     }
 
     public GuestEntity(String firstName, String lastName, LocalDate dateOfBirth) {
+        this.id = generateId();
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Integer getId() {
-        return this.id;
-    }
-
-    public String getFirstName() {
-        return this.firstName;
-    }
-
-    public String getLastName() {
-        return this.lastName;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return this.dateOfBirth;
+    public GuestEntity(GuestEntity guest) {
+        this.id = generateId();
+        this.firstName = guest.getFirstName();
+        this.lastName = guest.getLastName();
+        this.dateOfBirth = guest.getDateOfBirth();
     }
 }

@@ -28,7 +28,7 @@ public class GuestController {
 
     @PostMapping("/guests")
     public GuestEntity addOneGuest(@RequestBody GuestEntity guest) {
-//        return this.guestRepository.save(guest);
-        return this.crudFactory.createGuestEntity("1", "2", null);
+        return this.guestRepository.save(guest);
+        //return this.crudFactory.createGuestEntity(guest);
     }
 }

@@ -5,6 +5,7 @@ import com.pavlokaganise.hotelms.entities.GuestEntity;
 import com.pavlokaganise.hotelms.entities.StaffEntity;
 import com.pavlokaganise.hotelms.repositories.GuestRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDate;
 
@@ -17,8 +18,8 @@ public class CrudFactory implements CrudFactoryInterface{
     }
 
     @Override
-    public GuestEntity createGuestEntity(String firstName, String lastName, LocalDate dateOfBirth) {
-        return new GuestEntity(firstName, lastName, dateOfBirth);
+    public GuestEntity createGuestEntity(@RequestBody GuestEntity guest) {
+        return new GuestEntity(guest);
     }
 
     @Override
