@@ -1,7 +1,9 @@
 package com.pavlokaganise.hotelms.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
+@Getter
 @Entity
 @Table(name = "staff")
 public class StaffEntity {
@@ -19,21 +21,5 @@ public class StaffEntity {
         this.firstName = firstName;
         this.lastName = lastName;
         this.jobTitle = jobTitle;
-    }
-
-    public Integer getId() {
-        return this.id;
-    }
-
-    public String getFirstName() {
-        return this.firstName;
-    }
-
-    public String getLastName() {
-        return this.lastName;
-    }
-
-    public String getJobTitle() {
-        return this.jobTitle;
     }
 }

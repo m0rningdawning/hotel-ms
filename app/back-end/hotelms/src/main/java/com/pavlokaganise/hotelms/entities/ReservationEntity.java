@@ -1,8 +1,11 @@
 package com.pavlokaganise.hotelms.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+
 import java.time.LocalDate;
 
+@Getter
 @Entity
 @Table(name = "reservations")
 public class ReservationEntity {
@@ -24,29 +27,5 @@ public class ReservationEntity {
         this.roomNumber = roomNumber;
         this.roomType = roomType;
         this.dateOfReservation = dateOfReservation;
-    }
-
-    public Integer getId() {
-        return this.id;
-    }
-
-    public String getFirstName() {
-        return this.firstName;
-    }
-
-    public String getLastName() {
-        return this.lastName;
-    }
-
-    public Integer getRoomNumber() {
-        return this.roomNumber;
-    }
-
-    public String getRoomType() {
-        return this.roomType;
-    }
-
-    public LocalDate getDateOfReservation() {
-        return this.dateOfReservation;
     }
 }

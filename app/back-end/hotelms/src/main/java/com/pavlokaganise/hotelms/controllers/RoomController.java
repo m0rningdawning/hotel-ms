@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RoomController {
     private final RoomRepository roomRepository;
+
     @Autowired
     public RoomController(RoomRepository roomRepository) {
         this.roomRepository = roomRepository;
     }
+
     @GetMapping("/rooms")
     public Iterable<RoomEntity> findAllRooms() {
         return this.roomRepository.findAll();
