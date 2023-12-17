@@ -7,20 +7,16 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ReservationController {
-    private final ReservationRepository reservationRepository;
-
     @Autowired
-    public ReservationController(ReservationRepository reservationRepository) {
-        this.reservationRepository = reservationRepository;
-    }
+    private ReservationRepository reservationRepository;
 
     @GetMapping("/reservations")
-    public Iterable<ReservationEntity> findAllGuests() {
+    public Iterable<ReservationEntity> findAllReservations() {
         return this.reservationRepository.findAll();
     }
 
     @PostMapping("/reservations")
-    public ReservationEntity addOneGuest(@RequestBody ReservationEntity reservation) {
+    public ReservationEntity addOneReservation(@RequestBody ReservationEntity reservation) {
         return this.reservationRepository.save(reservation);
     }
 }

@@ -7,12 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class RoomController {
-    private final RoomRepository roomRepository;
-
     @Autowired
-    public RoomController(RoomRepository roomRepository) {
-        this.roomRepository = roomRepository;
-    }
+    private RoomRepository roomRepository;
 
     @GetMapping("/rooms")
     public Iterable<RoomEntity> findAllRooms() {

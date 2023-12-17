@@ -2,6 +2,7 @@ package com.pavlokaganise.hotelms.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NonNull;
 
 import java.time.LocalDate;
 import java.util.Random;
@@ -15,6 +16,7 @@ public class GuestEntity {
     private Integer id;
     private String firstName;
     private String lastName;
+    @NonNull
     private LocalDate dateOfBirth;
 
     public int generateId() {

@@ -9,13 +9,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class GuestService {
-    private final GuestRepository guestRepository;
-    private final CrudFactory crudFactory;
-
-    public GuestService(GuestRepository guestRepository, CrudFactory crudFactory) {
-        this.guestRepository = guestRepository;
-        this.crudFactory = crudFactory;
-    }
+    @Autowired
+    private GuestRepository guestRepository;
+    @Autowired
+    private CrudFactory crudFactory;
 
     public Iterable<GuestEntity> findAllGuests() {
         return guestRepository.findAll();
@@ -23,5 +20,9 @@ public class GuestService {
 
     public GuestEntity addOneGuest(@RequestBody GuestEntity guest) {
         return guestRepository.save(guest);
+    }
+
+    public GuestEntity findOneGuest(Integer id) {
+        return guestRepository.findById(id).orElseThrow();
     }
 }
