@@ -1,9 +1,7 @@
 package com.pavlokaganise.hotelms.factory;
 
-import com.pavlokaganise.hotelms.controllers.GuestController;
 import com.pavlokaganise.hotelms.entities.GuestEntity;
-import com.pavlokaganise.hotelms.entities.StaffEntity;
-import com.pavlokaganise.hotelms.repositories.GuestRepository;
+import com.pavlokaganise.hotelms.entities.FrontDeskEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -23,13 +21,13 @@ public class CrudFactory implements CrudFactoryInterface{
     }
 
     @Override
-    public StaffEntity createStaffEntity() {
-        return new StaffEntity();
+    public FrontDeskEntity createStaffEntity() {
+        return new FrontDeskEntity();
     }
 
     @Override
-    public StaffEntity createStaffEntity(String firstName, String lastName, String jobTitle) {
-        return new StaffEntity(firstName, lastName, jobTitle);
+    public FrontDeskEntity createStaffEntity(String firstName, String lastName, LocalDate dateOfBirth) {
+        return new FrontDeskEntity(firstName, lastName, dateOfBirth);
     }
 
 //    @Override

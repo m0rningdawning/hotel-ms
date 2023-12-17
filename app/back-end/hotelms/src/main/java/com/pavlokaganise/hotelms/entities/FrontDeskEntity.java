@@ -3,23 +3,25 @@ package com.pavlokaganise.hotelms.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+import java.time.LocalDate;
+
 @Getter
 @Entity
-@Table(name = "staff")
-public class StaffEntity {
+@Table(name = "front_desk")
+public class FrontDeskEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String firstName;
     private String lastName;
-    private String jobTitle;
+    private LocalDate dateOfBirth;
 
-    public StaffEntity() {
+    public FrontDeskEntity() {
     }
 
-    public StaffEntity(String firstName, String lastName, String jobTitle) {
+    public FrontDeskEntity(String firstName, String lastName, LocalDate dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.jobTitle = jobTitle;
+        this.dateOfBirth = dateOfBirth;
     }
 }

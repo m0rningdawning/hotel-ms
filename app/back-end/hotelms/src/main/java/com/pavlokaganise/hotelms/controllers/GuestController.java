@@ -1,10 +1,10 @@
 package com.pavlokaganise.hotelms.controllers;
 
 import com.pavlokaganise.hotelms.entities.GuestEntity;
-import com.pavlokaganise.hotelms.entities.StaffEntity;
-import com.pavlokaganise.hotelms.factory.CrudFactory;
-import com.pavlokaganise.hotelms.repositories.GuestRepository;
+import com.pavlokaganise.hotelms.services.GuestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,23 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class GuestController {
-    private final GuestRepository guestRepository;
-    private final CrudFactory crudFactory;
-
     @Autowired
-    public GuestController(GuestRepository guestRepository, CrudFactory crudFactory) {
-        this.guestRepository = guestRepository;
-        this.crudFactory = crudFactory;
-    }
+    private GuestService guestService;
 
     @GetMapping("/guests")
-    public Iterable<GuestEntity> findAllGuests() {
-        return this.guestRepository.findAll();
+    public ResponseEntity<Iterable<GuestEntity>> findAllGuests() {
+        return new ResponseEntity<>(guestService.findAllGuests(), HttpStatus.OK);
     }
 
     @PostMapping("/guests")
-    public GuestEntity addOneGuest(@RequestBody GuestEntity guest) {
-        return this.guestRepository.save(guest);
-        //return this.crudFactory.createGuestEntity(guest);
+    public ResponseEntity<GuestEntity> addOneGuest(@RequestBody GuestEntity guest) {
+        return new ResponseEntity<>(guestService.addOneGuest(guest), HttpStatus.CREATED);
     }
 }
