@@ -26,4 +26,9 @@ public class GuestController {
     public ResponseEntity<GuestEntity> addOneGuest(@RequestBody GuestEntity guest) {
         return new ResponseEntity<>(guestService.addOneGuest(guest), HttpStatus.CREATED);
     }
+
+    @PostMapping("/guests-factory")
+    public ResponseEntity<GuestEntity> addOneGuestFactory(@RequestBody GuestEntity guest){
+        return new ResponseEntity<>(guestService.addOneGuestFactory(guest), HttpStatus.CREATED);
+    }
 }
