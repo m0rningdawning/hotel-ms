@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class GuestService {
-    @Autowired
-    private GuestService instance;
+//    @Autowired
+//    private GuestService instance;
     @Autowired
     private GuestRepository guestRepository;
     @Autowired
     private CrudFactory crudFactory;
 
-    public GuestService getInstance(){
-        return this.instance;
-    }
+//    public GuestService getInstance(){
+//        return this.instance;
+//    }
 
     public Iterable<GuestEntity> findAllGuests() {
         return guestRepository.findAll();
