@@ -30,3 +30,44 @@
 #p-content {
   text-align: justify;
 }
+
+.right-aside-row{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1400px;
+  padding: 15px;
+}
+
+.right-aside-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 1400px;
+  padding: 15px;
+}
+
+.right-aside-col {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-aside-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-aside-header h2 {
+  font-size: 35px;
+}
+
+.reserve-btn{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
