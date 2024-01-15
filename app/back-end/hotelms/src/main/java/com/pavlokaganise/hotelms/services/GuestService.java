@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.Optional;
+
 @Service
 public class GuestService {
-//    @Autowired
+    //    @Autowired
 //    private GuestService instance;
     @Autowired
     private GuestRepository guestRepository;
@@ -24,11 +26,29 @@ public class GuestService {
         return guestRepository.findAll();
     }
 
+    public Optional<GuestEntity> findByEmail(String email) {
+        return guestRepository.findByEmail(email);
+    }
+
+    public Optional<GuestEntity> findByPassword(String password) {
+        return guestRepository.findByPassword(password);
+    }
+
     public GuestEntity addOneGuest(@RequestBody GuestEntity guest) {
         return guestRepository.save(guest);
     }
 
-    public GuestEntity addOneGuestFactory(@RequestBody GuestEntity guest){
+    public boolean loginGuest(String email, String password) {
+        Optional<GuestEntity> optionalGuest = guestRepository.findByEmail(email);
+
+        if (optionalGuest.isPresent()) {
+            GuestEntity guest = optionalGuest.get();
+            return password.equals(guest.getPassword());
+        }
+        return false;
+    }
+
+    public GuestEntity addOneGuestFactory(@RequestBody GuestEntity guest) {
         return crudFactory.createGuestEntity(guest, this.guestRepository);
     }
 

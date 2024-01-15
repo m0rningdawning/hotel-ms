@@ -1,5 +1,6 @@
 package com.pavlokaganise.hotelms.controllers;
 
+import com.pavlokaganise.hotelms.controllers.requests.LoginRequest;
 import com.pavlokaganise.hotelms.entities.GuestEntity;
 import com.pavlokaganise.hotelms.services.GuestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class GuestController {
     @Autowired
     private GuestService guestService;
@@ -22,6 +24,20 @@ public class GuestController {
         return new ResponseEntity<>(guestService.findOneGuest(id), HttpStatus.OK);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
+        String email = loginRequest.getEmail();
+        String password = loginRequest.getPassword();
+
+        boolean loginSuccessful = guestService.loginGuest(email, password);
+
+        if (loginSuccessful) {
+            return new ResponseEntity<>("Login successful", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Login failed", HttpStatus.UNAUTHORIZED);
+        }
+    }
+
     @PostMapping("/guests")
     public ResponseEntity<GuestEntity> addOneGuest(@RequestBody GuestEntity guest) {
         return new ResponseEntity<>(guestService.addOneGuest(guest), HttpStatus.CREATED);
@@ -29,6 +45,11 @@ public class GuestController {
 
     @PostMapping("/guests-factory")
     public ResponseEntity<GuestEntity> addOneGuestFactory(@RequestBody GuestEntity guest){
+        return new ResponseEntity<>(guestService.addOneGuestFactory(guest), HttpStatus.CREATED);
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<GuestEntity> registerGuest(@RequestBody GuestEntity guest){
         return new ResponseEntity<>(guestService.addOneGuestFactory(guest), HttpStatus.CREATED);
     }
 }

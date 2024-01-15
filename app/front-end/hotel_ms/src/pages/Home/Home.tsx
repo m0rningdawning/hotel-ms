@@ -2,6 +2,7 @@ import React from "react";
 import HmsFooter from "../../components/footer/HmsFooter";
 import HmsHeader from "../../components/header/HmsHeader";
 import HomeCarousel from "../../components/home-carousel/HomeCarousel";
+import { useUser } from "../../components/context/Context";
 import "./Home.css";
 
 const Home = () => {
@@ -45,6 +46,7 @@ const Home = () => {
             </div>
             <div className="right-aside-content">
               <div className="right-aside-col">
+                <p className="content-p">1 Bedroom</p>
                 <img id="raccoon" src="/resources/raccoon.jpeg" alt="Raccoon" />
                 <button
                   type="button"
@@ -54,6 +56,7 @@ const Home = () => {
                 </button>
               </div>
               <div className="right-aside-col">
+                <p className="content-p">2 Bedrooms</p>
                 <img id="raccoon" src="/resources/raccoon.jpeg" alt="Raccoon" />
                 <button
                   type="button"
@@ -63,6 +66,7 @@ const Home = () => {
                 </button>
               </div>
               <div className="right-aside-col">
+                <p className="content-p">3 Bedrooms</p>
                 <img id="raccoon" src="/resources/raccoon.jpeg" alt="Raccoon" />
                 <button
                   type="button"
@@ -79,6 +83,7 @@ const Home = () => {
             </div>
             <div className="right-aside-content">
               <div className="right-aside-col">
+                <p className="content-p">1 Bedroom</p>
                 <img id="doggo" src="/resources/doggo.jpg" alt="Doggo" />
                 <button
                   type="button"
@@ -88,6 +93,7 @@ const Home = () => {
                 </button>
               </div>
               <div className="right-aside-col">
+                <p className="content-p">2 Bedrooms</p>
                 <img id="doggo" src="/resources/doggo.jpg" alt="Doggo" />
                 <button
                   type="button"
@@ -97,6 +103,7 @@ const Home = () => {
                 </button>
               </div>
               <div className="right-aside-col">
+                <p className="content-p">3 Bedrooms</p>
                 <img id="doggo" src="/resources/doggo.jpg" alt="Doggo" />
                 <button
                   type="button"
@@ -113,7 +120,8 @@ const Home = () => {
             </div>
             <div className="right-aside-content">
               <div className="right-aside-col">
-                <img id="catto" src="/resources/cat.jpg" alt="Catto" />
+                <p className="content-p">1 Bedroom</p>
+                <img id="catto" src="/resources/rich-cat.jpg" alt="Catto" />
                 <button
                   type="button"
                   className="btn btn-outline-light reserve-btn"
@@ -122,7 +130,8 @@ const Home = () => {
                 </button>
               </div>
               <div className="right-aside-col">
-                <img id="catto" src="/resources/cat.jpg" alt="Catto" />
+                <p className="content-p">2 Bedrooms</p>
+                <img id="catto" src="/resources/rich-cat.jpg" alt="Catto" />
                 <button
                   type="button"
                   className="btn btn-outline-light reserve-btn"
@@ -131,7 +140,8 @@ const Home = () => {
                 </button>
               </div>
               <div className="right-aside-col">
-                <img id="catto" src="/resources/cat.jpg" alt="Catto" />
+                <p className="content-p">3 Bedrooms</p>
+                <img id="catto" src="/resources/rich-cat.jpg" alt="Catto" />
                 <button
                   type="button"
                   className="btn btn-outline-light reserve-btn"

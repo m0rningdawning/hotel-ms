@@ -16,6 +16,8 @@ public class GuestEntity {
     private Integer id;
     private String firstName;
     private String lastName;
+    private String email;
+    private String password;
     @NonNull
     private LocalDate dateOfBirth;
 
@@ -29,16 +31,15 @@ public class GuestEntity {
     }
 
     public GuestEntity(String firstName, String lastName, LocalDate dateOfBirth) {
-        this.id = generateId();
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
     }
 
     public GuestEntity(GuestEntity guest) {
-        this.id = generateId();
-        this.firstName = guest.getFirstName();
         this.lastName = guest.getLastName();
+        this.email = guest.getEmail();
+        this.password = guest.getPassword();
         this.dateOfBirth = guest.getDateOfBirth();
     }
 }

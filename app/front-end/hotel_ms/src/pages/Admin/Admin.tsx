@@ -2,6 +2,7 @@ import React from "react";
 import HmsFooter from "../../components/footer/HmsFooter";
 import HmsHeader from "../../components/header/HmsHeader";
 import "./Admin.css";
+import GuestList from "../../components/guestlist/GuestList";
 
 const Admin = () => {
   return (
@@ -98,41 +99,11 @@ const Admin = () => {
             molestias iste aliquid minus, quasi eos nostrum iure beatae, aut
             accusamus. Recusandae deserunt sit ea saepe velit illum, enim porro
             officia a quas consequatur corporis tenetur tempora rem rerum atque
-            debitis beatae doloremque, laudantium exercitationem! Dolorum
-            corporis explicabo voluptatum vel, voluptates dolorem ratione
-            reiciendis quo numquam laboriosam, distinctio cumque optio. Maiores,
-            qui veniam sed tempora, totam cumque exercitationem est expedita in
-            amet optio minus officiis saepe velit accusamus ullam, eius
-            consectetur voluptate distinctio. Eaque repellendus, explicabo
-            asperiores earum enim impedit vitae tempore. Laborum omnis,
-            cupiditate beatae pariatur, quos consectetur ea dolores iure ipsam
-            numquam natus? Perspiciatis commodi unde est incidunt quae maxime
-            eligendi inventore odit earum nulla voluptas exercitationem
-            perferendis hic quo voluptate fugit eveniet libero impedit quaerat
-            non officiis, nisi voluptatum. Animi sed quam rerum exercitationem,
-            totam eveniet aut aspernatur ut dolores. Quidem magni obcaecati quo
-            eius natus suscipit laboriosam minima quos pariatur illum? Deleniti
-            provident, nihil quae possimus et at illo necessitatibus neque
-            itaque incidunt sapiente temporibus molestias sed accusamus ducimus
-            harum. Eligendi neque enim ad cupiditate asperiores commodi illo
-            deleniti dolore velit inventore molestias error obcaecati, rerum
-            laudantium. Deserunt modi consequatur, perferendis porro magnam,
-            culpa inventore dolores maiores tempora earum nisi officiis soluta
-            quidem cupiditate minima commodi quas assumenda autem blanditiis cum
-            reprehenderit tempore ex alias sequi. Neque nam eveniet id iusto,
-            perspiciatis, iste libero est animi dolorem dolore velit aut
-            laboriosam placeat labore minima mollitia expedita. Soluta ea
-            veniam, eum voluptatibus commodi et! Nisi vitae eum aut rerum alias
-            doloremque voluptatibus quam id. Voluptatem vitae quisquam ratione
-            magni distinctio possimus officiis labore odit! Illum repellendus
-            quasi nostrum dignissimos enim deserunt odit, atque at quis,
-            possimus quisquam sint iste asperiores omnis ullam mollitia libero
-            sed quibusdam amet temporibus nihil! Voluptates sint cumque ut
-            dolore, commodi natus doloribus aliquid explicabo, iure odio earum
-            ratione! Libero, repudiandae exercitationem cum possimus dolorum,
-            architecto fugit eos facilis perspiciatis numquam molestiae.
-            Dolorum, iure!
+            debitis beatae doloremque, laudantium exercitationem!
           </p>
+        </div>
+        <div className="guestlist-wrapper">
+          <GuestList />
         </div>
       </div>
       <HmsFooter />
