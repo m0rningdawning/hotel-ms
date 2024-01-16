@@ -1,20 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+
+import { useUser } from "../context/Context";
 import "./HmsHeader.css";
 
+// Fix the isLoggedIn parameter in the logout useEffect hook
+
 const HmsHeader = () => {
+  const location = useLocation();
+
+  const [scrollTransition, setScrollTransition] = useState(false);
+  const headerTypes = ["header", "header-login"];
+
+  const { isLoggedIn, logout } = useUser();
+
+  useEffect(() => {
+    console.log("Is logged in on initial render:", isLoggedIn());
+  }, [isLoggedIn]);
+
   const linkList = [
     { to: "/home", text: "Home Page" },
     { to: "/admin", text: "Admin Page" },
     { to: "*", text: "404 Page" },
-    { to: "/login", text: "Login Page" },
+    { to: "/login", text: "Login" },
   ];
-
-
-  const headerTypes = ["header", "header-login"];
-
-  const location = useLocation();
-  const [scrollTransition, setScrollTransition] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +42,11 @@ const HmsHeader = () => {
   }, []);
 
   return (
-    <header className={`${scrollTransition ? "scroll_transition" : ""} ${location.pathname === linkList[3].to ? headerTypes[1] : headerTypes[0]}`}>
+    <header
+      className={`${scrollTransition ? "scroll_transition" : ""} ${
+        location.pathname === linkList[3].to ? headerTypes[1] : headerTypes[0]
+      }`}
+    >
       <nav className="header-nav">
         {location.pathname === linkList[0].to ? (
           <h1 className="header-h1">Home Page</h1>
@@ -61,11 +74,21 @@ const HmsHeader = () => {
               </Link>
             </li>
             <li>
-              <Link to={linkList[3].to}>
-                <button type="button" className="btn btn-outline-light">
-                  {linkList[3].text}
+              {isLoggedIn ? (
+                <button
+                  type="button"
+                  onClick={logout}
+                  className="btn btn-outline-light"
+                >
+                  Log Out
                 </button>
-              </Link>
+              ) : (
+                <Link to={linkList[3].to}>
+                  <button type="button" className="btn btn-outline-light">
+                    {linkList[3].text}
+                  </button>
+                </Link>
+              )}
             </li>
           </ul>
         ) : location.pathname === linkList[1].to ? (
@@ -85,11 +108,21 @@ const HmsHeader = () => {
               </Link>
             </li>
             <li>
-              <Link to={linkList[3].to}>
-                <button type="button" className="btn btn-outline-light">
-                  {linkList[3].text}
+              {isLoggedIn ? (
+                <button
+                  type="button"
+                  onClick={logout}
+                  className="btn btn-outline-light"
+                >
+                  Log Out
                 </button>
-              </Link>
+              ) : (
+                <Link to={linkList[3].to}>
+                  <button type="button" className="btn btn-outline-light">
+                    {linkList[3].text}
+                  </button>
+                </Link>
+              )}
             </li>
           </ul>
         ) : location.pathname === linkList[2].to ? (

@@ -2,7 +2,6 @@ import React from "react";
 import HmsFooter from "../../components/footer/HmsFooter";
 import HmsHeader from "../../components/header/HmsHeader";
 import HomeCarousel from "../../components/home-carousel/HomeCarousel";
-import { useUser } from "../../components/context/Context";
 import "./Home.css";
 
 const Home = () => {
