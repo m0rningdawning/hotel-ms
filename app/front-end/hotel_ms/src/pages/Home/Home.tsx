@@ -1,10 +1,100 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HmsFooter from "../../components/footer/HmsFooter";
 import HmsHeader from "../../components/header/HmsHeader";
 import HomeCarousel from "../../components/home-carousel/HomeCarousel";
 import "./Home.css";
+import { useUser } from "../../components/context/Context";
+import axios from "axios";
 
 const Home = () => {
+  const { user } = useUser();
+  const [isReserved, setIsReserved] = useState({});
+  const [reservationChange, setReservationChange] = useState(0);
+
+  const handleReservation = async (room: any) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/reservations/add",
+        {
+          roomNumber: room,
+          email: user,
+          dateOfReservation: new Date(),
+        }
+      );
+
+      if (response.status === 200) {
+        console.log("Reservation successful: " + response.data);
+        setReservationChange(reservationChange + 1);
+      } else {
+        console.log("Reservation failed: An error occurred");
+        window.alert("Reservation failed: An error occurred");
+      }
+    } catch (error) {
+      window.alert("Error during login: " + error);
+    }
+  };
+
+  const cancelReservation = async (room: any) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/reservations/remove",
+        {
+          roomNumber: room,
+          email: user,
+        }
+      );
+
+      if (response.status === 200) {
+        console.log("Cancellation successful: " + response.data);
+        setReservationChange(reservationChange + 1);
+        setIsReserved((prevIsReserved) => {
+          const newIsReserved = { ...prevIsReserved };
+          //@ts-ignore
+          delete newIsReserved[room];
+          return newIsReserved;
+        });
+      } else {
+        console.log("Cancellation failed: An error occurred");
+        window.alert("Cancellation failed: An error occurred");
+      }
+    } catch (error) {
+      window.alert("Error during cancellation: " + error);
+    }
+  };
+
+  useEffect(() => {
+    const fetchReservations = async () => {
+      try {
+        const response = await axios.post(
+          "http://localhost:8080/reservations/find",
+          {
+            email: user,
+          }
+        );
+
+        if (response.status === 200) {
+          const reservedRooms = response.data.map(
+            (reservation: any) => reservation.roomNumber
+          );
+          console.log("Reservations fetched successfully: ", reservedRooms);
+          const newIsReserved = reservedRooms.reduce((acc: any, curr: any) => {
+            acc[curr] = true;
+            return acc;
+          }, {});
+          setIsReserved(newIsReserved);
+        } else {
+          console.log("Failed to fetch reservations: An error occurred");
+        }
+      } catch (error) {
+        console.log("Error during fetching reservations: " + error);
+      }
+    };
+
+    if (user) {
+      fetchReservations();
+    }
+  }, [user, reservationChange]);
+
   return (
     <>
       <HmsHeader />
@@ -47,32 +137,68 @@ const Home = () => {
               <div className="right-aside-col">
                 <p className="content-p">1 Bedroom</p>
                 <img id="raccoon" src="/resources/raccoon.jpeg" alt="Raccoon" />
-                <button
-                  type="button"
-                  className="btn btn-outline-light reserve-btn"
-                >
-                  Reserve
-                </button>
+                {/*@ts-ignore*/}
+                {isReserved[11] ? (
+                  <button
+                    type="button"
+                    className="btn btn-outline-light reserve-btn"
+                    onClick={() => cancelReservation(11)}
+                  >
+                    Cancel
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn btn-outline-light reserve-btn"
+                    onClick={() => handleReservation(11)}
+                  >
+                    Reserve
+                  </button>
+                )}
               </div>
               <div className="right-aside-col">
                 <p className="content-p">2 Bedrooms</p>
                 <img id="raccoon" src="/resources/raccoon.jpeg" alt="Raccoon" />
-                <button
-                  type="button"
-                  className="btn btn-outline-light reserve-btn"
-                >
-                  Reserve
-                </button>
+                {/*@ts-ignore*/}
+                {isReserved[12] ? (
+                  <button
+                    type="button"
+                    className="btn btn-outline-light reserve-btn"
+                    onClick={() => cancelReservation(12)}
+                  >
+                    Cancel
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn btn-outline-light reserve-btn"
+                    onClick={() => handleReservation(12)}
+                  >
+                    Reserve
+                  </button>
+                )}
               </div>
               <div className="right-aside-col">
                 <p className="content-p">3 Bedrooms</p>
                 <img id="raccoon" src="/resources/raccoon.jpeg" alt="Raccoon" />
-                <button
-                  type="button"
-                  className="btn btn-outline-light reserve-btn"
-                >
-                  Reserve
-                </button>
+                {/*@ts-ignore*/}
+                {isReserved[13] ? (
+                  <button
+                    type="button"
+                    className="btn btn-outline-light reserve-btn"
+                    onClick={() => cancelReservation(13)}
+                  >
+                    Cancel
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn btn-outline-light reserve-btn"
+                    onClick={() => handleReservation(13)}
+                  >
+                    Reserve
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -84,32 +210,68 @@ const Home = () => {
               <div className="right-aside-col">
                 <p className="content-p">1 Bedroom</p>
                 <img id="doggo" src="/resources/doggo.jpg" alt="Doggo" />
-                <button
-                  type="button"
-                  className="btn btn-outline-light reserve-btn"
-                >
-                  Reserve
-                </button>
+                {/*@ts-ignore*/}
+                {isReserved[21] ? (
+                  <button
+                    type="button"
+                    className="btn btn-outline-light reserve-btn"
+                    onClick={() => cancelReservation(21)}
+                  >
+                    Cancel
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn btn-outline-light reserve-btn"
+                    onClick={() => handleReservation(21)}
+                  >
+                    Reserve
+                  </button>
+                )}
               </div>
               <div className="right-aside-col">
                 <p className="content-p">2 Bedrooms</p>
                 <img id="doggo" src="/resources/doggo.jpg" alt="Doggo" />
-                <button
-                  type="button"
-                  className="btn btn-outline-light reserve-btn"
-                >
-                  Reserve
-                </button>
+                {/*@ts-ignore*/}
+                {isReserved[22] ? (
+                  <button
+                    type="button"
+                    className="btn btn-outline-light reserve-btn"
+                    onClick={() => cancelReservation(22)}
+                  >
+                    Cancel
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn btn-outline-light reserve-btn"
+                    onClick={() => handleReservation(22)}
+                  >
+                    Reserve
+                  </button>
+                )}
               </div>
               <div className="right-aside-col">
                 <p className="content-p">3 Bedrooms</p>
                 <img id="doggo" src="/resources/doggo.jpg" alt="Doggo" />
-                <button
-                  type="button"
-                  className="btn btn-outline-light reserve-btn"
-                >
-                  Reserve
-                </button>
+                {/*@ts-ignore*/}
+                {isReserved[23] ? (
+                  <button
+                    type="button"
+                    className="btn btn-outline-light reserve-btn"
+                    onClick={() => cancelReservation(23)}
+                  >
+                    Cancel
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn btn-outline-light reserve-btn"
+                    onClick={() => handleReservation(23)}
+                  >
+                    Reserve
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -121,32 +283,68 @@ const Home = () => {
               <div className="right-aside-col">
                 <p className="content-p">1 Bedroom</p>
                 <img id="catto" src="/resources/rich-cat.jpg" alt="Catto" />
-                <button
-                  type="button"
-                  className="btn btn-outline-light reserve-btn"
-                >
-                  Reserve
-                </button>
+                {/*@ts-ignore*/}
+                {isReserved[31] ? (
+                  <button
+                    type="button"
+                    className="btn btn-outline-light reserve-btn"
+                    onClick={() => cancelReservation(31)}
+                  >
+                    Cancel
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn btn-outline-light reserve-btn"
+                    onClick={() => handleReservation(31)}
+                  >
+                    Reserve
+                  </button>
+                )}
               </div>
               <div className="right-aside-col">
                 <p className="content-p">2 Bedrooms</p>
                 <img id="catto" src="/resources/rich-cat.jpg" alt="Catto" />
-                <button
-                  type="button"
-                  className="btn btn-outline-light reserve-btn"
-                >
-                  Reserve
-                </button>
+                {/*@ts-ignore*/}
+                {isReserved[32] ? (
+                  <button
+                    type="button"
+                    className="btn btn-outline-light reserve-btn"
+                    onClick={() => cancelReservation(32)}
+                  >
+                    Cancel
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn btn-outline-light reserve-btn"
+                    onClick={() => handleReservation(32)}
+                  >
+                    Reserve
+                  </button>
+                )}
               </div>
               <div className="right-aside-col">
                 <p className="content-p">3 Bedrooms</p>
                 <img id="catto" src="/resources/rich-cat.jpg" alt="Catto" />
-                <button
-                  type="button"
-                  className="btn btn-outline-light reserve-btn"
-                >
-                  Reserve
-                </button>
+                {/*@ts-ignore*/}
+                {isReserved[33] ? (
+                  <button
+                    type="button"
+                    className="btn btn-outline-light reserve-btn"
+                    onClick={() => cancelReservation(33)}
+                  >
+                    Cancel
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn btn-outline-light reserve-btn"
+                    onClick={() => handleReservation(33)}
+                  >
+                    Reserve
+                  </button>
+                )}
               </div>
             </div>
           </div>

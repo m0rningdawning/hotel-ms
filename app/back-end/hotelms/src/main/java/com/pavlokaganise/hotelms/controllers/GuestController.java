@@ -39,7 +39,7 @@ public class GuestController {
         boolean loginSuccessful = guestService.loginGuest(email, password);
 
         if (loginSuccessful) {
-            return new ResponseEntity<>("Login successful", HttpStatus.OK);
+            return new ResponseEntity<>(email, HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Login failed", HttpStatus.UNAUTHORIZED);
         }

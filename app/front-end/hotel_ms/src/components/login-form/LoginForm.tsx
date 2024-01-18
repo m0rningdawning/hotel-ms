@@ -80,7 +80,7 @@ const LoginForm = () => {
       if (response.status === 200) {
         login(response.data);
         navigate("/home");
-        console.log("Login successful: ", response.data);
+        console.log("Login successful: " + response.data);
       } else {
         console.log("Login failed: An error occurred");
         window.alert("Login failed: An error occurred");

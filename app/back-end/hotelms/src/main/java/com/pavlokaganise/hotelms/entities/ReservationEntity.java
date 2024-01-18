@@ -12,20 +12,16 @@ public class ReservationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String firstName;
-    private String lastName;
     private Integer roomNumber;
-    private String roomType;
+    private String email;
     private LocalDate dateOfReservation;
 
     public ReservationEntity() {
     }
 
-    public ReservationEntity(String firstName, String lastName, Integer roomNumber, String roomType, LocalDate dateOfReservation) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public ReservationEntity( Integer roomNumber, String email, LocalDate dateOfReservation) {
         this.roomNumber = roomNumber;
-        this.roomType = roomType;
+        this.email = email;
         this.dateOfReservation = dateOfReservation;
     }
 }

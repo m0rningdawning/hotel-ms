@@ -8,6 +8,7 @@ type UserContextType = {
   isLoggedIn: any;
   login: (userData: any) => void;
   logout: () => void;
+  readCredentials: () => void;
 };
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
@@ -26,7 +27,9 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <Context.Provider value={{ user, login, logout, isLoggedIn }}>
+    <Context.Provider
+      value={{ user, login, logout, isLoggedIn }}
+    >
       {children}
     </Context.Provider>
   );
