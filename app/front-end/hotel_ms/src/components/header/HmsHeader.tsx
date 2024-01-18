@@ -4,8 +4,6 @@ import { Link, useLocation } from "react-router-dom";
 import { useUser } from "../context/Context";
 import "./HmsHeader.css";
 
-// Fix the isLoggedIn parameter in the logout useEffect hook
-
 const HmsHeader = () => {
   const location = useLocation();
 
@@ -15,14 +13,14 @@ const HmsHeader = () => {
   const { isLoggedIn, logout } = useUser();
 
   useEffect(() => {
-    console.log("Is logged in on initial render:", isLoggedIn());
+    console.log("Is logged in value:", isLoggedIn());
   }, [isLoggedIn]);
 
   const linkList = [
     { to: "/home", text: "Home Page" },
     { to: "/admin", text: "Admin Page" },
     { to: "*", text: "404 Page" },
-    { to: "/login", text: "Login" },
+    { to: "/login", text: "Sign In" },
   ];
 
   useEffect(() => {
@@ -74,7 +72,7 @@ const HmsHeader = () => {
               </Link>
             </li>
             <li>
-              {isLoggedIn ? (
+              {isLoggedIn() ? (
                 <button
                   type="button"
                   onClick={logout}
@@ -108,7 +106,7 @@ const HmsHeader = () => {
               </Link>
             </li>
             <li>
-              {isLoggedIn ? (
+              {isLoggedIn() ? (
                 <button
                   type="button"
                   onClick={logout}
@@ -162,13 +160,6 @@ const HmsHeader = () => {
               <Link to={linkList[1].to}>
                 <button type="button" className="btn btn-outline-light">
                   {linkList[1].text}
-                </button>
-              </Link>
-            </li>
-            <li>
-              <Link to={linkList[3].to}>
-                <button type="button" className="btn btn-outline-light">
-                  {linkList[3].text}
                 </button>
               </Link>
             </li>

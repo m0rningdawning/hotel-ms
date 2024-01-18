@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 public class GuestController {
@@ -22,6 +24,11 @@ public class GuestController {
     @GetMapping("/guests/{id}")
     public ResponseEntity<GuestEntity> findOneGuest(@PathVariable Integer id) {
         return new ResponseEntity<>(guestService.findOneGuest(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/guests/{email}")
+    public ResponseEntity<Optional<GuestEntity>> findOneGuestEmail(@PathVariable String email){
+        return new ResponseEntity<>(guestService.findByEmail(email), HttpStatus.OK);
     }
 
     @PostMapping("/login")
@@ -49,7 +56,7 @@ public class GuestController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<GuestEntity> registerGuest(@RequestBody GuestEntity guest){
-        return new ResponseEntity<>(guestService.addOneGuestFactory(guest), HttpStatus.CREATED);
+    public ResponseEntity<GuestEntity> registerGuest(@RequestBody GuestEntity guest) throws Exception {
+        return new ResponseEntity<>(guestService.registerGuest(guest), HttpStatus.CREATED);
     }
 }

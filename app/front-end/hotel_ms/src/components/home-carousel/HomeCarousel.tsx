@@ -8,7 +8,7 @@ const HomeCarousel = () => {
       <Carousel className="carousel-home">
         <Carousel.Item>
           <img
-            src="https://imageio.forbes.com/specials-images/imageserve/5cdb058a5218470008b0b00f/Nobu-Ryokan-Malibu/0x0.jpg?format=jpg&height=1009&width=2000"
+            src="https://www.homestratosphere.com/wp-content/uploads/2014/05/shutterstock_30411274.jpg"
             className="d-block carousel-img"
             alt="Room 1"
           ></img>
@@ -19,7 +19,7 @@ const HomeCarousel = () => {
         </Carousel.Item>
         <Carousel.Item>
           <img
-            src="https://hotelandra.com/wp-content/uploads/2022/01/Andra2483-Andra-Queen-Queen.jpg"
+            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2Fad%2F34%2Fad%2Fad34ad8485eb2eb9fce806826b65375d.jpg&f=1&nofb=1&ipt=c9b5812c4d4154532d886e54e05cf6083a6f800d9e527252cae98dcf8aefa2fe&ipo=images"
             className="d-block carousel-img"
             alt="Room 2"
           ></img>

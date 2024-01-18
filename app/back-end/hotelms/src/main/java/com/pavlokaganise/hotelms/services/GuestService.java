@@ -48,6 +48,15 @@ public class GuestService {
         return false;
     }
 
+    public GuestEntity registerGuest(@RequestBody GuestEntity guest) throws Exception {
+        Optional<GuestEntity> og = guestRepository.findByEmail(guest.getEmail());
+
+        if (og.isPresent())
+            throw new Exception("The user is already registered!");
+
+        return guestRepository.save(guest);
+    }
+
     public GuestEntity addOneGuestFactory(@RequestBody GuestEntity guest) {
         return crudFactory.createGuestEntity(guest, this.guestRepository);
     }

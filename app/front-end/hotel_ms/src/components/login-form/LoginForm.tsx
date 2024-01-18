@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import { useUser } from "../context/Context";
+import { log } from "console";
 
 const activeTab = (e: any) => {
   const tabs = document.querySelectorAll(".nav-link");
@@ -24,12 +25,24 @@ const activeTab = (e: any) => {
 };
 
 const LoginForm = () => {
-  const [isChecked, setIsChecked] = useState(false);
+  // const [isChecked, setIsChecked] = useState(false);
   const [isRegisterClicked, setIsRegisterClicked] = useState(false);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { login } = useUser();
+
+  // Login hooks
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useUser();
-  const navigate = useNavigate();
+
+  // Register hooks
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
 
   // useEffect(() => {
   //   const tabs = document.querySelectorAll(".nav-link");
@@ -47,9 +60,18 @@ const LoginForm = () => {
   //   }
   // }, []);
 
+  // useEffect(() => {
+  //   if (location.hash === '#pills-login') {
+  //     setIsRegisterClicked(false);
+  //     activeTab({ currentTarget: { href: '#pills-login' } });
+  //   } else if (location.hash === '#pills-register') {
+  //     setIsRegisterClicked(true);
+  //     activeTab({ currentTarget: { href: '#pills-register' } });
+  //   }
+  // }, [location.hash]);
+
   const handleLogin = async () => {
     try {
-      //eslint-disable-next-line react-hooks/rules-of-hooks
       const response = await axios.post("http://localhost:8080/login", {
         email,
         password,
@@ -59,16 +81,45 @@ const LoginForm = () => {
         login(response.data);
         navigate("/home");
         console.log("Login successful: ", response.data);
-      } else if (response.status === 401) {
-        console.log("Login failed: Invalid credentials");
-        window.alert("Login failed: Invalid credentials");
       } else {
         console.log("Login failed: An error occurred");
         window.alert("Login failed: An error occurred");
       }
     } catch (error) {
-      console.error("Error during login:", error);
-      window.alert("Error during login: " + error);
+      //@ts-ignore
+      if (error.response.status === 401) {
+        console.log("Login failed: Invalid credentials");
+        window.alert("Login failed: Invalid credentials");
+      } else window.alert("Error during login: " + error);
+    }
+  };
+
+  const handleRegister = async () => {
+    if (registerPassword !== repeatPassword) {
+      window.alert("Passwords do not match.");
+      return;
+    } else {
+      try {
+        const response = await axios.post("http://localhost:8080/register", {
+          firstName: name,
+          lastName: surname,
+          email: registerEmail,
+          password: registerPassword,
+          dateOfBirth,
+        });
+
+        if (response.status === 201) {
+          login(response.data);
+          navigate("/home");
+          console.log("Register successful!");
+        } else {
+          console.log("Register failed: An error occurred");
+          window.alert("Register failed: An error occurred");
+        }
+      } catch (error) {
+        //@ts-ignore
+        window.alert("Error during register: " + error);
+      }
     }
   };
 
@@ -138,7 +189,7 @@ const LoginForm = () => {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                   <label className="form-label" htmlFor="loginName">
-                    Email or username
+                    Email
                   </label>
                 </div>
 
@@ -155,7 +206,7 @@ const LoginForm = () => {
                   </label>
                 </div>
 
-                <div className="row mb-4">
+                {/* <div className="row mb-4">
                   <div className="col-md-6 d-flex justify-content-center">
                     <div className="form-check mb-3 mb-md-0">
                       <input
@@ -178,7 +229,7 @@ const LoginForm = () => {
                       Forgot password?
                     </a>
                   </div>
-                </div>
+                </div> */}
 
                 <button
                   type="submit"
@@ -222,55 +273,60 @@ const LoginForm = () => {
               <form>
                 <p className="text-center">Register:</p>
 
-                <div className="form-outline mb-4">
+                <div className="form-outline mb-3">
                   <input
                     type="text"
                     id="registerName"
                     className="form-control"
+                    onChange={(e) => setName(e.target.value)}
                   />
                   <label className="form-label" htmlFor="registerName">
                     Name
                   </label>
                 </div>
 
-                <div className="form-outline mb-4">
+                <div className="form-outline mb-3">
                   <input
                     type="text"
-                    id="registerUsername"
+                    id="registerSurname"
                     className="form-control"
+                    onChange={(e) => setSurname(e.target.value)}
                   />
                   <label className="form-label" htmlFor="registerUsername">
-                    Username
+                    Surname
                   </label>
                 </div>
 
-                <div className="form-outline mb-4">
+                <div className="form-outline mb-3">
                   <input
                     type="email"
                     id="registerEmail"
                     className="form-control"
+                    onChange={(e) => setRegisterEmail(e.target.value)}
                   />
                   <label className="form-label" htmlFor="registerEmail">
                     Email
                   </label>
                 </div>
 
-                <div className="form-outline mb-4">
+                <div className="form-outline mb-3">
                   <input
                     type="password"
                     id="registerPassword"
                     className="form-control"
+                    onChange={(e) => setRegisterPassword(e.target.value)}
                   />
                   <label className="form-label" htmlFor="registerPassword">
                     Password
                   </label>
                 </div>
 
-                <div className="form-outline mb-4">
+                <div className="form-outline mb-3">
                   <input
                     type="password"
                     id="registerRepeatPassword"
                     className="form-control"
+                    onChange={(e) => setRepeatPassword(e.target.value)}
                   />
                   <label
                     className="form-label"
@@ -280,10 +336,26 @@ const LoginForm = () => {
                   </label>
                 </div>
 
+                <div className="form-outline mb-3">
+                  <input
+                    type="date"
+                    id="registerDateOfBirth"
+                    className="form-control"
+                    onChange={(e) => setDateOfBirth(e.target.value)}
+                  />
+                  <label className="form-label" htmlFor="registerDateOfBirth">
+                    Date of birth
+                  </label>
+                </div>
+
                 <button
                   type="submit"
                   id="form-submit-register-btn"
-                  className="form-login-register-btn mb-4"
+                  className="form-login-register-btn mb-3"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    handleRegister();
+                  }}
                 >
                   Register
                 </button>
