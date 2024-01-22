@@ -9,6 +9,5 @@ import java.util.Optional;
 @Repository
 public interface GuestRepository extends JpaRepository<GuestEntity, Integer> {
     Optional<GuestEntity> findByEmail(String email);
-
     Optional<GuestEntity> findByPassword(String password);
 }

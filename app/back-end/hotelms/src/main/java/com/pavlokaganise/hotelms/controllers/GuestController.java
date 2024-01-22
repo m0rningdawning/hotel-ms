@@ -3,7 +3,11 @@ package com.pavlokaganise.hotelms.controllers;
 import com.pavlokaganise.hotelms.controllers.requests.LoginRequest;
 import com.pavlokaganise.hotelms.entities.GuestEntity;
 import com.pavlokaganise.hotelms.services.GuestService;
+import com.pavlokaganise.hotelms.strategy.AddOneGuestStrategy;
+import com.pavlokaganise.hotelms.strategy.FindAllGuestsStrategy;
+import com.pavlokaganise.hotelms.strategy.GuestStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +19,14 @@ import java.util.Optional;
 public class GuestController {
     @Autowired
     private GuestService guestService;
+
+//    @Autowired
+//    @Qualifier("addOneGuestStrategy")
+//    private GuestStrategy addOneGuestStrategy;
+//
+//    @Autowired
+//    @Qualifier("findAllGuestStrategy")
+//    private GuestStrategy findAllGuestsStrategy;
 
     @GetMapping("/guests")
     public ResponseEntity<Iterable<GuestEntity>> findAllGuests() {
@@ -59,4 +71,17 @@ public class GuestController {
     public ResponseEntity<GuestEntity> registerGuest(@RequestBody GuestEntity guest) throws Exception {
         return new ResponseEntity<>(guestService.registerGuest(guest), HttpStatus.CREATED);
     }
+
+//    @PostMapping("/guests")
+//    public ResponseEntity<?> addOneGuestStrat(@RequestBody GuestEntity guest) {
+//        addOneGuestStrategy = new AddOneGuestStrategy();
+//        return addOneGuestStrategy.execute(guest);
+//    }
+//
+//    @GetMapping("/guests")
+//    public ResponseEntity<?> findAllGuestsStrat() {
+//        findAllGuestsStrategy = new FindAllGuestsStrategy();
+//        return findAllGuestsStrategy.execute(new GuestEntity());
+//    }
+
 }
